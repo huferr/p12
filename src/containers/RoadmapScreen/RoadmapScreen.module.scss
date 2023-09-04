@@ -1,0 +1,267 @@
+.roadmap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media screen and (max-width: point(sm)) {
+    height: 200vh !important;
+    justify-content: flex-start;
+    padding-top: 14rem !important;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: url(/assets/images/blur-12.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100vw;
+    height: 200vh;
+    min-width: 200vh;
+    right: 0;
+    left: 0;
+    opacity: .7;
+    z-index: 1;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: url(/assets/images/blur-8.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    min-width: 100vh;
+    left: -50vw;
+    top: 0;
+    opacity: .7;
+    z-index: 1;
+  }
+}
+
+.roadmap__description {
+  position: relative;
+  z-index: 3;
+
+  .screen-title {
+    position: relative;
+    margin-top: 1rem;
+
+    @media screen and (max-width: point(sm)) {
+      text-align: center;
+    }
+  }
+}
+
+.roadmap__text-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 3;
+
+  @media screen and (max-width: point(sm)) {
+    flex-direction: column;
+    align-items: flex-end;
+    height: 100%;
+  }
+
+  .text-block {
+    position: relative;
+    max-width: 13.75rem;
+
+    h4,
+    ul {
+      @media screen and (max-width: point(sm)) {
+        // transform: skewY(2deg);
+      }
+    }
+
+    h4 {
+      @include font-azonix;
+      font-size: font(24);
+    }
+
+    ul {
+      margin-top: 0.625rem;
+
+      li:not(:first-child) {
+        @include font-light;
+        font-size: font(16);
+        margin-top: .5rem;
+      }
+
+      li {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        &:before {
+          content: '';
+          display: block;
+          width: 3px;
+          height: 3px;
+          min-width: 3px;
+          min-height: 3px;
+          background: color('white');
+          border-radius: 50%;
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+
+  .text-block {
+    @media screen and (max-width: point(sm)) {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+
+      // @media screen and (min-aspect-ratio: 375 / 774) {
+      //     margin-top: 1rem;
+      // }
+      @media screen and (max-width: point(sm)) {
+        margin-bottom: 0;
+        margin-right: 2.5rem;
+        margin-top: 4rem;
+      }
+    }
+
+    &:nth-child(2) {
+      margin-bottom: 2rem;
+
+      @media screen and (max-width: point(sm)) {
+        margin-bottom: 0;
+        margin-right: 4.5rem;
+        margin-top: 4rem;
+      }
+    }
+
+    &:nth-child(3) {
+      margin-bottom: 10rem;
+
+      @media screen and (max-width: point(sm)) {
+        margin-bottom: 0;
+        margin-right: 3rem;
+        margin-top: 4rem;
+      }
+    }
+
+    &:nth-child(4) {
+      margin-bottom: 18rem;
+
+      @media screen and (max-width: point(sm)) {
+        margin-bottom: 0;
+        margin-right: -1rem;
+        margin-top: 4rem;
+      }
+    }
+  }
+}
+
+.roadmap__progress {
+  --color-path-1: rgba(255, 255, 255, .3);
+  --color-path-2: rgba(255, 255, 255, .3);
+  --color-path-3: rgba(255, 255, 255, .3);
+  --color-path-4: rgba(255, 255, 255, .3);
+  --color-path-5: rgba(255, 255, 255, .3);
+  --color-path-6: rgba(255, 255, 255, .3);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  animation: 2s progressLighten infinite;
+  z-index: 1;
+
+  svg {
+    position: absolute;
+    width: 150vw;
+    height: auto;
+    top: -35vw;
+    left: -35vw;
+
+    path {
+      transition: .3s fill ease;
+    }
+
+    @media screen and (max-width: point(lg)) {
+      top: -30vw;
+      left: -40vw;
+    }
+
+    @media screen and (max-width: point(sm)) {
+      width: 400vw;
+      height: auto;
+      transform: rotate(90deg);
+      left: -130vw;
+      top: 15vw;
+    }
+  }
+}
+
+@keyframes progressLighten {
+  from {
+    --color-path-1: white;
+  }
+
+  15% {
+    --color-path-1: rgba(255, 255, 255, .3);
+    --color-path-2: white;
+  }
+
+  30% {
+    --color-path-2: rgba(255, 255, 255, .3);
+    --color-path-3: white;
+  }
+
+  45% {
+    --color-path-3: rgba(255, 255, 255, .3);
+    --color-path-4: white;
+  }
+
+  60% {
+    --color-path-4: rgba(255, 255, 255, .3);
+    --color-path-5: white;
+  }
+
+  75% {
+    --color-path-5: rgba(255, 255, 255, .3);
+    --color-path-6: white;
+  }
+
+  80% {
+    --color-path-6: rgba(255, 255, 255, .3);
+  }
+
+  to {
+    --color-path-6: rgba(255, 255, 255, .3);
+  }
+}
+
+// animation styles before
+.roadmap {
+
+  &:before,
+  &:after {
+    opacity: 0;
+    transition: calc(var(--content-appear-time) + .5s) opacity;
+  }
+
+  .roadmap__progress {
+    opacity: 0;
+    transition: calc(var(--content-appear-time) + .5s) opacity;
+  }
+}
+
+// animation styles after
+.roadmap.active {
+
+  &:before,
+  &:after,
+  .roadmap__progress {
+    opacity: 1;
+  }
+}

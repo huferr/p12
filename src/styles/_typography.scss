@@ -1,0 +1,64 @@
+@mixin font-azonix {
+  font-family: "Azonix", sans-serif;
+  font-weight: 300;
+}
+@mixin font-light {
+  font-family: "PlusJakartaDisplay", sans-serif;
+  font-weight: 300;
+}
+@mixin font-regular {
+  font-family: "PlusJakartaDisplay", sans-serif;
+  font-weight: 400;
+}
+@mixin font-medium {
+  font-family: "PlusJakartaDisplay", sans-serif;
+  font-weight: 500;
+}
+@mixin font-bold {
+  font-family: "PlusJakartaDisplay", sans-serif;
+  font-weight: 700;
+}
+
+$fonts: (
+  14: 0.875rem,
+  16: 1rem,
+  18: 1.125rem,
+  20: 1.25rem,
+  22: 1.375rem,
+  24: 1.5rem,
+  26: 1.625rem,
+  32: 2rem,
+  36: 2.25rem,
+  38: 2.375rem,
+  40: 2.5rem,
+  54: 3.375rem,
+  61: 3.8125rem,
+  64: 4rem,
+  144: 9rem,
+);
+
+@function font($name) {
+  @return map-get($fonts, $name);
+}
+
+@mixin font-16 {
+  font-size: font(16);
+}
+@mixin font-24 {
+  font-size: font(24);
+}
+@mixin font-32 {
+  font-size: font(32);
+}
+@mixin font-48 {
+  font-size: font(48);
+}
+@mixin font-64 {
+  font-size: font(64);
+}
+@mixin font-80 {
+  font-size: font(80);
+}
+@mixin font-160 {
+  font-size: font(160);
+}

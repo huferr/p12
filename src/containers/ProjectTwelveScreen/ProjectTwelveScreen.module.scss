@@ -1,0 +1,251 @@
+.project-twelve {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  @media screen and (max-width: point(sm)) {
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 2rem !important;
+  }
+
+  .project-twelve__title {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+
+    @media screen and (max-width: point(sm)) {
+      margin-top: 15vh;
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(color('white'), 1%);
+      backdrop-filter: blur(24px);
+      width: var(--width);
+      height: var(--height);
+
+      @media screen and (max-width: point(sm)) {
+        backdrop-filter: blur(8px);
+      }
+    }
+
+    &:before {
+      --width: 6.125rem;
+      --height: var(--width);
+      top: calc(var(--width) / -3);
+      left: calc(var(--height) / -2);
+      box-shadow: inset 0px -.5rem .875rem rgba(color('white'), 25%);
+      z-index: -1;
+
+      @media screen and (max-width: point(sm)) {
+        --width: 2.3125rem;
+      }
+    }
+
+    &:after {
+      --width: 9.25rem;
+      --height: var(--width);
+      right: 0;
+      bottom: calc(var(--height) / -3);
+      box-shadow: inset 0px 4px 4px rgba(color('white'), 25%);
+      z-index: 3;
+
+      @media screen and (max-width: point(sm)) {
+        --width: 3.375rem;
+      }
+    }
+  }
+
+  h1 {
+    @include font-azonix;
+    font-size: font(144);
+    text-transform: uppercase;
+    line-height: 9.5rem;
+    text-align: left;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: point(sm)) {
+      font-size: font(61);
+      line-height: 4rem;
+      text-align: center;
+    }
+  }
+
+  .divider {
+    --divider-width: 6.125rem;
+    width: var(--divider-width);
+    height: 4px;
+    background: color('white');
+    margin-top: 1.8125rem;
+    z-index: 1;
+
+    @media screen and (max-width: point(sm)) {
+      margin-top: 3.125rem;
+    }
+  }
+
+  .learn-button {
+    margin-top: 2rem;
+    z-index: 1;
+
+    @media screen and (max-width: point(sm)) {
+      margin-top: 3.125rem;
+    }
+  }
+}
+
+.project-twelve .social {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  right: 4rem;
+  transform: translate3d(0, -50%, 0);
+  color: color('blue-light');
+  z-index: 1;
+
+  @media screen and (max-width: point(sm)) {
+    display: none;
+  }
+
+  >div {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+
+    &:not(:first-child) {
+      margin-top: 2rem;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      min-width: 100%;
+      min-height: 100%;
+    }
+  }
+}
+
+.project-twelve .message {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  right: 4rem;
+  bottom: 4rem;
+  z-index: 1;
+  pointer-events: none;
+
+  @media screen and (max-width: point(sm)) {
+    right: auto;
+    left: 2rem;
+
+    @media screen and (min-aspect-ratio: 480 / 720) {
+      display: none;
+    }
+  }
+
+  .vertical-divider {
+    width: 4px;
+    height: auto;
+    background: color('white');
+    margin-right: 1.5rem;
+    pointer-events: none;
+  }
+
+  p {
+    @include font-light;
+    font-size: font(16);
+    line-height: 1.375rem;
+    max-width: 21.8125rem;
+    text-align: left;
+
+    @media screen and (max-width: point(sm)) {
+      max-width: calc(100% - 4rem);
+    }
+  }
+}
+
+.project-twelve__background {
+  position: absolute;
+  width: 100%;
+  height: 200%;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+
+// animation styles before
+.project-twelve {
+  h1 {
+    opacity: 0;
+    transition: opacity var(--content-appear-time);
+
+    span:first-child {
+      transform: translate3d(15rem, 0, 0);
+      transition: transform var(--content-appear-time) ease;
+    }
+
+    span:last-child {
+      transform: translate3d(25rem, 0, 0);
+      transition: transform var(--content-appear-time) ease;
+    }
+  }
+
+  .divider {
+    max-width: 0;
+    transition: max-width var(--content-appear-time) ease;
+  }
+
+  .message {
+    .vertical-divider {
+      max-height: 0;
+      transition: var(--content-appear-time) max-height .3s ease;
+    }
+
+    p {
+      transform: translate3d(0, 5rem, 0);
+      opacity: 0;
+      transition: var(--content-appear-time) transform .3s ease, var(--content-appear-time) opacity .5s;
+    }
+  }
+}
+
+// animation styles after
+.project-twelve.active {
+  h1 {
+    opacity: 1;
+
+    span:first-child {
+      transform: translate3d(0, 0, 0);
+    }
+
+    span:last-child {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .divider {
+    max-width: var(--divider-width);
+  }
+
+  .message {
+    .vertical-divider {
+      max-height: 15rem;
+    }
+
+    p {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+}

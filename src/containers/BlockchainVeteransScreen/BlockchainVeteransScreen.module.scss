@@ -1,0 +1,134 @@
+.blockchain-veterans {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: url(/assets/svg/willnotfillthegap.svg) no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 18.4375rem;
+    height: 29.375rem;
+    left: 11rem;
+    top: calc(50% - 29.375rem / 2);
+    z-index: -1;
+
+    @media screen and (max-width: point(sm)) {
+      display: none;
+    }
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: url(/assets/images/blur-4.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 150vh;
+    height: 150vh;
+    right: -50vh;
+    top: -20vh;
+    opacity: .7;
+    z-index: 1;
+
+    @media screen and (max-width: point(sm)) {
+      right: -100vh;
+    }
+  }
+
+  h2 {
+    text-align: center;
+
+    @media screen and (max-width: point(sm)) {
+      width: calc(100% + 2rem);
+      font-size: font(32);
+    }
+
+    span {
+      display: block;
+      text-align: center;
+
+    }
+  }
+}
+
+.blockchain-veterans__description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+
+  .divider {
+    width: 6.125rem;
+    height: 4px;
+    background: color('white');
+    margin-top: 4rem;
+
+    @media screen and (max-width: point(sm)) {
+      margin-top: 3.125rem;
+    }
+  }
+
+  .learn-button {
+    margin-top: 4rem;
+
+    @media screen and (max-width: point(sm)) {
+      margin-top: 3.125rem;
+    }
+  }
+}
+
+// animation styles before
+$content: (
+  '.screen-title span:nth-child(1)',
+  '.screen-title span:nth-child(2)',
+  '.screen-title span:nth-child(3)',
+  '.screen-title span:nth-child(4)',
+  '.divider',
+  '.learn-button',
+);
+
+.blockchain-veterans {
+  @for $i from 1 through 6 {
+    $class: nth($content, $i);
+
+    #{$class} {
+      transition: var(--content-appear-time) transform #{$i / 10}s,
+      var(--content-appear-time) opacity #{$i / 10}s;
+      transform: translate3d(0, 5rem, 0);
+      opacity: 0;
+    }
+  }
+
+  &:before,
+  &:after {
+    opacity: 0;
+    transition: var(--content-appear-time) opacity;
+  }
+}
+
+// animation styles after
+.blockchain-veterans.active {
+  @for $i from 1 through 6 {
+    $class: nth($content, $i);
+
+    #{$class} {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+
+  &:before {
+    opacity: 1;
+  }
+
+  &:after {
+    opacity: 1;
+  }
+}

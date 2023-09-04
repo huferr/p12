@@ -1,0 +1,27 @@
+#screen-title {
+    @include font-azonix;
+    font-size: font(54);
+    color: #6C6AFF;
+    background-color: #6C6AFF;
+    background-image: linear-gradient(93.77deg, #6C6AFF -14.61%, #FBC7D4 86.26%, #FF658B 106.26%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @media screen and (max-width: point(sm)) {
+        font-size: font(38);
+    }
+
+    span {
+        color: #6C6AFF;
+        background-color: #6C6AFF;
+        background-image: linear-gradient(93.77deg, #6C6AFF -14.61%, #FBC7D4 86.26%, #FF658B 106.26%);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+#screen-subtitle {
+    @include font-medium;
+    font-size: font(18);
+    color: color('white');
+}

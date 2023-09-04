@@ -1,0 +1,207 @@
+.nomocracy {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: point(sm)) {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: url(/assets/images/blur-11.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100vw;
+    height: 100vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: .7;
+    z-index: 1;
+
+    @media screen and (max-width: point(sm)) {
+      width: 100vh;
+      height: 100vh;
+    }
+  }
+}
+
+.nomocracy__description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+
+  @media screen and (max-width: point(sm)) {
+    align-items: center;
+    width: 100%;
+  }
+
+  .screen-title {
+    margin-top: 3.375rem;
+
+    @media screen and (max-width: point(sm)) {
+      margin-top: 2rem;
+
+      @media screen and (min-aspect-ratio: 375 / 615) {
+        margin-top: -.5rem;
+      }
+    }
+  }
+
+  .subtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include font-azonix;
+    font-size: font(22);
+    margin-top: 4rem;
+
+    @media screen and (max-width: point(sm)) {
+      width: 100%;
+      margin-top: 1rem;
+
+      @media screen and (min-aspect-ratio: 375 / 650) {
+        display: none;
+      }
+    }
+  }
+
+  .divider {
+    height: 1.5rem;
+    width: 1px;
+    background: color('white');
+    margin: 0 3rem;
+  }
+
+  p {
+    width: 14.3125rem;
+  }
+}
+
+.nomocracy__text-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  @media screen and (max-width: point(sm)) {
+    flex-direction: column;
+  }
+
+  .text-block {
+    --text-block-height: 6.25rem;
+    position: relative;
+    margin-bottom: var(--text-block-height);
+    height: 6.125rem;
+
+    @media screen and (max-width: point(sm)) {
+      margin-bottom: 2rem;
+      margin-left: 5rem !important;
+      height: auto;
+    }
+
+    h4 {
+      @include font-medium;
+      font-size: font(18);
+    }
+
+    ul {
+      margin-top: 0.625rem;
+
+      li:not(:first-child) {
+        @include font-light;
+        font-size: font(16);
+        margin-top: .5rem;
+      }
+
+      li {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        &:before {
+          content: '';
+          display: block;
+          width: 3px;
+          height: 3px;
+          min-width: 3px;
+          min-height: 3px;
+          background: color('white');
+          border-radius: 50%;
+          margin-right: 1rem;
+        }
+      }
+    }
+
+    .arrow {
+      position: absolute;
+      display: block;
+      width: 7.125rem;
+      height: 7.1875rem;
+      top: calc(100% + var(--text-block-height) / 3);
+      left: 50%;
+      transform: translate(-50%);
+
+      @media screen and (max-width: point(sm)) {
+        left: auto;
+        top: 50%;
+        right: 100%;
+        transform: translate(0, -50%);
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        min-width: 100%;
+        min-height: 100%;
+      }
+    }
+  }
+
+  .text-block:nth-child(2) {
+    margin-left: 8.4375rem;
+    margin-right: 7.4375rem;
+  }
+
+  @media screen and (max-width: point(sm)) {
+    .text-block:nth-child(2) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+// arrow animation
+.nomocracy__text-content .arrow {
+  --color-path-1: rgba(255, 255, 255, .3);
+  --color-path-2: white;
+  animation: 1.5s lighten infinite;
+
+  svg path {
+    transition: fill .5s ease;
+  }
+}
+
+// animation styles before
+.nomocracy {
+
+  &:before,
+  &:after {
+    opacity: 0;
+    transition: calc(var(--content-appear-time) + .5s) opacity;
+  }
+}
+
+// animation styles after
+.nomocracy.active {
+
+  &:before,
+  &:after {
+    opacity: 1;
+  }
+}

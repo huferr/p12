@@ -1,0 +1,24 @@
+.screens {
+  overflow: hidden;
+  max-height: 100vh;
+  z-index: 5;
+}
+
+.screens__flow-container {
+  & > div:nth-child(n + 1) {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      padding-left: 14.5rem;
+      padding-top: 6rem;
+      padding-bottom: 2rem;
+      padding-right: 4rem;
+
+      @media screen and (max-width: point(sm)) {
+          padding: 2rem;
+          @media screen and (min-aspect-ratio: 320 / 600) {
+              padding-top: 6rem;
+          }
+      }
+  }
+}

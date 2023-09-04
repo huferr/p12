@@ -1,0 +1,10 @@
+$breakpoints: (
+  xlg: 1920px,
+  lg: 1440px,
+  md: 1080px,
+  sm: 576px,
+);
+
+@function point($name) {
+  @return map-get($breakpoints, $name);
+}

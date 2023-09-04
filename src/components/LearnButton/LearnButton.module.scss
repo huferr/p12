@@ -1,0 +1,93 @@
+.learnButton {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    @include font-bold;
+    font-size: font(16);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: color('white');
+    cursor: pointer;
+
+    .icon {
+        display: block;
+        width: 4rem;
+        height: 3rem;
+        margin-left: 1.5rem;
+
+        svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-width: 100%;
+            min-height: 100%;
+        }
+    }
+}
+
+.learnButton {
+    --transition-time: .3s;
+
+    >span {
+        transition: opacity var(--transition-time) ease,
+            transform var(--transition-time) ease;
+    }
+
+    rect {
+        transition: fill var(--transition-time) ease;
+    }
+}
+
+.learnButton:hover {
+    >span {
+        opacity: .8;
+    }
+
+    >.icon {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    >.icon>svg>rect {
+        fill: rgba(color('blue'), 1)
+    }
+}
+
+// anim 
+.learnButton {
+    opacity: 0;
+    transition: var(--content-appear-time) opacity .25s ease;
+
+    svg rect {
+        transform: matrix(.5, 0, 0, .5, 12.5, 12.5);
+        transition: var(--content-appear-time) transform .5s, fill .3s ease;
+    }
+
+    svg .tip {
+        transform: translate3d(-2.25rem, 0, 0);
+        transition: var(--content-appear-time) transform .5s;
+    }
+
+    svg .cane {
+        transform: matrix(.25, 0, 0, 1, 0, 0);
+        transition: var(--content-appear-time) transform .5s;
+    }
+}
+
+.learnButton.active {
+
+    opacity: 1;
+
+    svg rect {
+        transform: matrix(1, 0, 0, 1, 0, 0);
+    }
+
+    svg .tip {
+        transform: translate3d(0, 0, 0)
+    }
+
+    svg .cane {
+        transform: matrix(1, 0, 0, 1, 0, 0);
+    }
+
+}

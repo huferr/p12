@@ -1,0 +1,95 @@
+@import 'normalize';
+@import 'classes';
+
+:root {
+  --content-appear-time: .75s;
+}
+
+html {
+  @include font-light;
+  color: color('white');
+  background: color('blue-dark');
+}
+
+html {
+  font-size: 0.8333333333333333vw;
+
+  @media screen and (max-width: point(xlg)) {
+    font-size: 0.9333333333333333vw;
+  }
+  @media screen and (max-width: point(lg)) {
+    font-size: 1.11111111111vw;
+  }
+  @media screen and (max-width: point(md)) {
+    font-size: 1.11111111111vw;
+  }
+  @media screen and (max-width: point(sm)) {
+    font-size: 4.102564102564103vw;
+  }
+}
+
+:root {
+  @each $name, $color in $colors {
+    --color-#{$name}: #{$color};
+  }
+  @each $name, $spacing in $spacings {
+    --spacing-#{$name}: #{$spacing};
+  }
+  @each $name, $font in $fonts {
+    --font-size-#{$name}: #{$font};
+  }
+}
+
+@font-face {
+  font-family: "Azonix";
+  src: url("/assets/fonts/Azonix.otf") format("truetype");
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-family: "PlusJakartaDisplay";
+  src: url("/assets/fonts/PlusJakartaDisplay-Light.otf") format("truetype");
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-family: "PlusJakartaDisplay";
+  src: url("/assets/fonts/PlusJakartaDisplay-Regular.otf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "PlusJakartaDisplay";
+  src: url("/assets/fonts/PlusJakartaDisplay-Medium.otf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "PlusJakartaDisplay";
+  src: url("/assets/fonts/PlusJakartaDisplay-Bold.otf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+}
+
+        // animation styles before
+        $content: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
+        @each $i in $content {
+          .-trAnim-#{$i} {
+            transition: var(--content-appear-time) transform #{$i / 10}s, var(--content-appear-time) opacity #{$i / 10}s;
+            transform: translate3d(0, 5rem, 0);
+            opacity: 0;
+          } 
+        }
+      
+      // animation styles after
+      .active {
+          @each $i in $content {
+            .-trAnim-#{$i} {
+              transform: translate3d(0, 0, 0);
+              opacity: 1;
+            }
+          }
+      }
+
+
+

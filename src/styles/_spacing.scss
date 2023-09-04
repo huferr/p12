@@ -1,0 +1,8 @@
+$spacings: (
+  1: 1px,
+  84: 5.25rem,
+);
+
+@function spacing($name) {
+  @return map-get($spacings, $name);
+}
