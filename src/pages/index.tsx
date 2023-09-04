@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
-import Head from "next/head";
 
 import Screens from "@/containers/Screens/Screens";
 
@@ -151,9 +150,6 @@ const App = () => {
 
   return (
     <div className={styles.main}>
-      <Head>
-        <base href={process.env.NEXT_PUBLIC_GH_URL} />
-      </Head>
       <Screens
         delayedActiveScreenNumber={delayedActiveScreenNumber}
         scrollHeight={scrollHeight}
